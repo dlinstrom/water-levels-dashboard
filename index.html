@@ -525,8 +525,16 @@
                     client.end();
                 }
                 
-                const protocol = (port === '8080' || port === '8081') ? 'ws' : 'wss';
-                const url = `${protocol}://${broker}:${port}/mqtt`;
+                <script>
+  (function () {
+    const isHttps = location.protocol === 'https:';
+    document.getElementById('host')?.value ||= 'test.mosquitto.org';
+    document.getElementById('port')?.value =  isHttps ? '8081' : '8080';
+    const t = document.getElementById('topic');
+    if (t && (!t.value || t.value === 'meshtastic/#')) t.value = 'dl/water/#';
+  })();
+</script>
+
                 
                 addLog(`Connecting to ${url}`);
                 
