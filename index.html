@@ -407,7 +407,7 @@
         <div class="message-log">
             <h3>Message Log</h3>
             <div id="messageLog">
-                <div class="log-entry">Waiting for MQTT library to load...</div>
+                <div class="log-entry">Waiting for  library to load...</div>
             </div>
         </div>
         
@@ -797,7 +797,7 @@
     const isHttps = location.protocol === 'https:';
     const defaultHost  = 'test.mosquitto.org';
     const defaultPort  = isHttps ? '8081' : '8080';
-    const defaultTopic = 'dl/water/#'; // <-- change if you use a different prefix
+    const defaultTopic = 'meshtastic/#'; // <-- change if you use a different prefix
 
     // Try to fill common input fields. Replace IDs if yours differ.
     const hostInput  = document.getElementById('host')  || document.querySelector('input[name=host]');
