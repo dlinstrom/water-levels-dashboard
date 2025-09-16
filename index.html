@@ -789,5 +789,31 @@
             console.error(message);
         }
     </script>
+    <script>
+  (function () {
+    // Detect where the page is hosted:
+    // - GitHub Pages (HTTPS) => use secure WSS on port 8081
+    // - Local testing (http://localhost or file://) => use WS on 8080
+    const isHttps = location.protocol === 'https:';
+    const defaultHost  = 'test.mosquitto.org';
+    const defaultPort  = isHttps ? '8081' : '8080';
+    const defaultTopic = 'dl/water/#'; // <-- change if you use a different prefix
+
+    // Try to fill common input fields. Replace IDs if yours differ.
+    const hostInput  = document.getElementById('host')  || document.querySelector('input[name=host]');
+    const portInput  = document.getElementById('port')  || document.querySelector('input[name=port]');
+    const topicInput = document.getElementById('topic') || document.querySelector('input[name=topic]');
+
+    if (hostInput) hostInput.value = defaultHost;
+    if (portInput) portInput.value = defaultPort;
+    if (topicInput && (!topicInput.value || topicInput.value === 'meshtastic/#')) {
+      topicInput.value = defaultTopic; // avoid the public firehose
+    }
+
+    // Optional: expose a ready-to-use URL your code can use if it wants
+    // (Only if your script reads window.MQTT_WS_URL)
+    window.MQTT_WS_URL = `${isHttps ? 'wss' : 'ws'}://${defaultHost}:${defaultPort}/mqtt`;
+  })();
+</script>
 </body>
 </html>
