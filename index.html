@@ -320,7 +320,7 @@
             <br>
             <div class="config-grid">
                 <input type="text" id="broker" placeholder="Broker URL" value="test.mosquitto.org">
-                <input type="text" id="port" placeholder="Port" value="8080">
+                <input type="text" id="port" placeholder="Port" value="8081">
                 <input type="text" id="topic" placeholder="Topic (use # for all)" value="meshtastic/#">
                 <select id="maxPoints">
                     <option value="50">Keep last 50 readings</option>
@@ -488,7 +488,7 @@
         
         function setPreset(preset) {
             const configs = {
-                mosquitto: { broker: 'test.mosquitto.org', port: '8080', topic: 'meshtastic/#' },
+                mosquitto: { broker: 'test.mosquitto.org', port: '8081', topic: 'meshtastic/#' },
                 meshtastic: { broker: 'mqtt.meshtastic.org', port: '443', topic: 'msh/+/+/+/+/+' },
                 hivemq: { broker: 'broker.hivemq.com', port: '8884', topic: 'meshtastic/#' }
             };
